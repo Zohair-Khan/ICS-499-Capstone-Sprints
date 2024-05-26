@@ -5,11 +5,9 @@ This repository contains the "Sprints" for team "Badass Team Name (AKA Purple Hi
 - [Zohair Khan](https://github.com/Zohair-Khan)
 - [Erich Berger](https://github.com/ErichBerger)
 - [Martin Black](https://github.com/martinblackd23d)
-- [Mohamed Albatushi](https://github.com/) (Need to fix link)
+- [Mohamed Albatushi](https://github.com/) (TODO: Update link once Mohamed is added as a collaborator)
 
-## Sprints:
-
-### Sprint 0:
+## Sprint 0:
 This sprint was designed to be a team building exercise. It has 2 parts:
-- Part 1: Complete the team working agreement.
-- Part 2: Create a state diagram for a checking account.
+- [Part 1](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/) (TODO: Update link once working agreement is added to repository): Complete the team working agreement.
+- [Part 2](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/blob/main/Sprint0/submission/Part01_ATM%20State%20Diagram.png): Create a state diagram for a checking account.
