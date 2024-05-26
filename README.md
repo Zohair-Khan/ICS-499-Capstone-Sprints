@@ -9,7 +9,7 @@ This repository contains the "Sprints" for team "Badass Team Name (AKA Purple Hi
 
 ## Sprints:
 
-# Sprint 0:
+### Sprint 0:
 This sprint was designed to be a team building exercise. It has 2 parts:
 - Part 1: Complete the team working agreement.
 - Part 2: Create a state diagram for a checking account.
