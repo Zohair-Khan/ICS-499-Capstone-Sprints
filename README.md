@@ -1,2 +1,10 @@
 # ICS-499-Capstone-Sprints
-Repository containing the "Sprints" for ICS-499: Software Engineering &amp; Capstone
+This repository contains the "Sprints" for team "Badass Team Name (AKA Purple Hippos)" in ICS-499: Software Engineering & Capstone.
+
+## Team Members:
+- [Zohair Khan](https://github.com/Zohair-Khan)
+- [Erich Berger](https://github.com/ErichBerger)
+- [Martin Black](https://github.com/martinblackd23d)
+- [Mohamed Albatushi](https://github.com/) (Need to fix link)
+
+
