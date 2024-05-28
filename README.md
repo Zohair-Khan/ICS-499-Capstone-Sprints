@@ -5,7 +5,7 @@ This repository contains the "Sprints" for team "Badass Team Name (AKA Purple Hi
 - [Zohair Khan](https://github.com/Zohair-Khan)
 - [Erich Berger](https://github.com/ErichBerger)
 - [Martin Black](https://github.com/martinblackd23d)
-- [Mohamed Albatushi](https://github.com/) (TODO: Update link once Mohamed is added as a collaborator)
+- [Mohamed Albatushi](https://github.com/albM23)
 
 ## Sprint 0:
 This sprint was designed to be a team building exercise. It has 2 parts:
