@@ -15,8 +15,8 @@ This sprint was designed to be a team building exercise. It has 2 parts:
 ## Sprint 1:
 
 - [Vision Template](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main): Complete Vision Template. (TODO: Update link, System Overview, Attributes, Key Features, Capabilities)
-- [Start of Story Map] (https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main):
-- [Feature Files] (https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main): 
-- [Working Code or UI prototype] (https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main): 
+- [Start of Story Map](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main): Creating a story for our system
+- [Feature Files](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main): 
+- [Working Code or UI prototype](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/tree/main): 
 
 (TODO: add goal dates for each step?)
