@@ -8,7 +8,6 @@ This repository contains the "Sprints" for team "Badass Team Name (AKA Purple Hi
 - [Mohamed Albatushi](https://github.com/albM23)
 
 ## Sprint 0:
-This sprint was designed to be a team building exercise. It has 2 parts:
 - Part 1: [Team Working Agreement.](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/blob/main/Sprint0/submission/Team%20Agreement.pdf)
 - Part 2: [Create a state diagram for a checking account.](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/blob/main/Sprint0/submission/Part01_ATM%20State%20Diagram.png)
 
