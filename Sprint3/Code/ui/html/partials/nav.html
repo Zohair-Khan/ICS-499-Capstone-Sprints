@@ -1,0 +1,17 @@
+{{define "nav"}}
+{{if .IsLoggedIn }}
+<nav>
+  <ul>
+    <a class='{{block "notes" .}}{{end}}' href="/notes"><li>Dashboard</li></a>
+    <a class='{{block "add-note" .}}{{end}}' href="/add-note"><li>Add Note</li></a>
+  </ul> 
+</nav>
+{{else}}
+<nav>
+  <ul>
+    <a class='{{block "home" .}}{{end}}' href="/home"><li>Home</li></a>
+    <a class='{{block "login" .}}{{end}}' href="/login"><li>Login</li></a>
+  </ul>
+</nav>
+{{end}}
+{{end}}

@@ -1,0 +1,55 @@
+{{define "title"}}Add Progress Note{{end}}
+{{define "add-note"}}highlighted{{end}}
+{{define "main"}}
+<h3>Create Note</h3>
+<form class="progressnote" id="progressnote" action="/add-note" method="post">
+    <div class="initial">
+        <label for="patient">Select Patient:</label>
+        <input type="text" name="patient" id="patient">
+    </div> 
+    <div class="initial">
+        <label for="service">Type of Service:</label> 
+        <input type="text" id="service" name="service">
+    </div>
+    <div class="initial">
+        <label for="serviceDate">Date of Service:</label> 
+        <input type="date" id="servicedate" name="serviceDate"> 
+    </div>
+    <div class="initial">
+        <label for="startTime">Session Start Time:</label> 
+        <input type="time" id="startTime" name="startTime"> 
+    </div>
+    <div class="initial">
+        <label for="endTime">Session End Time:</label> 
+        <input type="time" id="endTime" name="endTime"> 
+    </div>
+    <div class="text">
+        <label for="summary">Summary of Treatment</label>
+        <textarea id="summary" name="summary" cols="55" rows="4"></textarea>
+    </div>
+    <div class="text">
+        <label for="progress">Progress with Overall Treatment Plan Goals/Objectives</label>
+        <textarea id="progress" name="progress" cols="55" rows="4"></textarea>
+    </div>
+    <div class="text">
+        <label for="response">Response/Reaction to Treatment Interventions</label>
+        <textarea id="response" name="response" cols="55" rows="4"></textarea>
+    </div>
+    <div class="text">
+        <label for="assessmentStatus">Assessment of Patient Mental Health Status</label>
+        <textarea id="assessmentStatus" name="assessmentStatus" cols="55" rows="4"></textarea>
+    </div>
+    <div class="text">
+        <label for="riskFactors">Patient Risk Factors</label>
+        <textarea id="riskFactors" name="riskFactors" cols="55" rows="4"></textarea>
+    </div>
+    <div class="text">
+        <label for="emergencyInterventions">Emergency Interventions</label>
+        <textarea id="emergencyInterventions" name="emergencyInterventions" cols="55" rows="4"></textarea>
+    </div>
+    <div class="bnbuttons">
+        <div></div>
+        <button form="progressnote" type="submit">Submit</button>
+    </div>
+</form>
+{{end}}

@@ -28,3 +28,12 @@ This repository contains the "Sprints" for team "Badass Team Name (AKA Purple Hi
 - Part 7: [Updated Progress Journal.](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/blob/main/Sprint1/submission/ICS%20499%20-%20Progress%20Journal%20-%20Team%20Badass%20Purple%20Hippos.pdf)
 - Part 8: [Slideshow for In-Class Presentation.](https://github.com/Zohair-Khan/ICS-499-Capstone-Sprints/blob/main/Sprint1/submission/Class%20Presentation.pdf)
 
+## Sprint 2:
+
+  - Updated Story Maps
+- Updated Non-Functional Requirements document
+- ER Diagram
+- State diagrams
+- Data definition
+- Sequence Diagrams for each user story
+- 

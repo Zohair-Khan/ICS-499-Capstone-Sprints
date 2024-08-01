@@ -1,0 +1,20 @@
+template:
+    --background: ;
+    --text: ;
+    --textlight: ;
+    --primary: ;
+    --secondary: ;
+
+PINKS
+    --background:#faf8f9 ;
+    --text: #080707;
+    --textlight: #524747;
+    --primary:#a56288 ;
+    --secondary:#d2a1bd ;
+
+JAZZ
+    --background: #f3f8f6;
+    --text: #030504 ;
+    --textlight: #0f1a14;
+    --primary: #61a185;
+    --secondary: #a6aaca;

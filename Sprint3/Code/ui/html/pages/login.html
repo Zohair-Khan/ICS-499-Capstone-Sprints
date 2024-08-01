@@ -1,0 +1,19 @@
+{{define "title"}}Login{{end}}
+
+{{define "login"}}highlighted{{end}}
+{{define "main"}}
+    <form class="login" action="/login" method="POST">
+        <h3>Login</h3>
+        <div class="username">
+            <label for="user">Username: </label>
+            <input type="text" id="user" name="user">
+        </div>
+        <div class="password">
+            <label for="pass">Password: </label>
+            <input type="text" id="pass" name="pass">
+        </div>
+        <input type="submit" value="Login" class="submit">
+    </form>
+    
+
+{{end}}

@@ -1,0 +1,65 @@
+{{define "title"}}Note{{end}}
+    {{define "main"}}
+        <h1>Progress Note</h1>
+        {{with .Note}}
+        <div class="note">
+            <ul class="note-info">
+                <li>
+                    <b>Note ID:</b> {{.ID}}
+                </li>
+
+                <li>
+                    <b>Patient: </b> {{.Patient}}
+                </li>
+                <li>
+                    <b>Provider: </b> {{.Provider}}
+                </li>
+                <li>
+                    <b>Service: </b> {{.Service}}
+                </li>
+                <li>
+                    <b>Date of Service: </b> {{.ServiceDate.Format "01/02/2006"}}
+                </li>
+
+                <li>
+                    <b>Time: </b> {{.StartTime.Format "03:04AM"}} to {{.EndTime.Format "03:04AM"}}
+                </li>
+                <li>
+                    <b>Status: </b> {{.Status}}
+                </li>
+            </ul>
+            <div class="note-note">
+                <p>
+                    <b>Summary of Service:</b> <br>
+                    {{.Summary}}    
+                </p>
+
+                <p>
+                    <b>Progress with Overall Treatment Plan Goals/Objectives:</b> <br>
+                    {{.Progress}}
+                </p>
+
+                <p>
+                    <b>Response/Reaction to Treatment Interventions:</b> <br>
+                    {{.Response}}
+                </p> 
+
+                <p>
+                    <b>Assessment of Patient Mental Health Status:</b> <br>
+                    {{.AssessmentStatus}}
+                </p>
+
+                <p>
+                    <b>Patient Risk Factors:</b> <br>
+                    {{.RiskFactors}}
+                </p>
+
+                <p>
+                    <b>Emergency Interventions:</b> <br>
+                    {{.EmergencyInterventions}}
+                </p>
+            </ul>
+            <button type="submit" action="/notes" method="get">Back</button>
+        </div>
+        {{end}}
+{{end}}

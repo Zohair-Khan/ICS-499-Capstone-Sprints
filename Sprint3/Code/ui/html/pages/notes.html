@@ -1,0 +1,170 @@
+{{define "title"}}Provider Notes{{end}}
+{{define "notes"}}highlighted{{end}}
+    
+    <!-- https://www.w3schools.com/howto/howto_js_filter_table.asp -->
+    <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table -->
+    
+{{define "main"}}    
+    <div class="notes">
+    <ul class="notes-filter">
+        <li>
+            <label for="patientfname">First Name: </label> 
+            <input type="text" id="patientfname" onkeyup="filterTable()">
+        </li>
+        <li>
+            <label for="patientlname">Last Name: </label>
+            <input type="text" id="patientlname" onkeyup="filterTable()">
+        </li>
+        <li>
+            <label for="servicedatestart">Between dates:</label> 
+            <input type="date" id="servicedatestart" onchange="filterTable()">
+            <label for="servicedateend"> and </label>
+            <input type="date" id="servicedateend" onchange="filterTable()"> 
+        </li> 
+        <li>
+            <label for="servicetimestart">Between times:</label> 
+            <input type="time" id="servicetimestart" onchange="filterTable()">
+            <label for="servicetimeend"> and </label>
+            <input type="time" id="servicetimeend" onchange="filterTable()"> 
+        </li>
+        <li>
+            <label for="servicetype">Type of Service:</label> 
+            <select id="servicetype" onchange="filterTable()">
+                <option value="service1">Service1</option>
+                <option value="service2">Service2</option>
+                <option value="service3">Service3</option>
+                <option value="service4">Service4</option>
+            </select> 
+        </li> 
+        <button class="clear" onclick="clearFilters()">Clear Filters</button>
+    </ul>
+    <table class="notes-notes" id="myTable">
+        <thead>
+            <tr class="header">
+                <th>Note ID</th>
+                <th>Date</th>
+                <th>Patient</th>
+                <th>Service</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Notes}}
+            <tr>
+                <td><a class="noteid" href="/note/{{.ID}}">{{.ID}}</a></td>
+                <td>{{.ServiceDate.Format "01/02/2006"}}</td> 
+                <td>{{.Patient}}</td>
+                <td>{{.Service}}</td>
+                <td>{{.Status}}</td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</div>
+
+<script>
+document.getElementById("servicetype").selectedIndex = -1;
+
+function clearDateFilter() {
+    document.getElementById("servicedatestart").value = "";
+    document.getElementById("servicedateend").value = "";
+}
+
+function clearTimeFilter() {
+    document.getElementById("servicetimestart").value = "";
+    document.getElementById("servicetimeend").value = "";
+}
+
+function clearServiceFilter() {
+    document.getElementById("servicetype").selectedIndex = -1;
+}
+
+function clearFilters() {
+    document.getElementById("patientfname").value = "";
+    document.getElementById("patientlname").value = "";
+    clearDateFilter();
+    clearTimeFilter();
+    clearServiceFilter();
+    filterTable();
+}
+
+function filterTable() {
+    // Get filter inputs
+    var input_patientfname = document.getElementById("patientfname").value.toLowerCase();
+    var input_patientlname = document.getElementById("patientlname").value.toLowerCase();
+    var input_servicedatestart = document.getElementById("servicedatestart").value;
+    var input_servicedateend = document.getElementById("servicedateend").value;
+    var input_servicetimestart = document.getElementById("servicetimestart").value;
+    var input_servicetimeend = document.getElementById("servicetimeend").value;
+    var input_servicetype = document.getElementById("servicetype").value.toLowerCase();
+
+    // Get the table and its rows
+    var table = document.getElementById("myTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Loop through each row of the table
+    for (var i = 1; i < tr.length; i++) {
+        var row = tr[i];
+
+        // Get data from each cell of the row
+        var noteId = row.cells[0].textContent || row.cells[0].innerText;
+        var patientFName = row.cells[1].textContent || row.cells[1].innerText;
+        var patientLName = row.cells[2].textContent || row.cells[2].innerText;
+        var serviceDate = row.cells[3].textContent || row.cells[3].innerText;
+        var serviceType = row.cells[4].textContent || row.cells[4].innerText;
+        var startTime = row.cells[5].textContent || row.cells[5].innerText;
+
+        // Check if the row matches the filter criteria
+        var patientFNameMatch = patientFName.toLowerCase().includes(input_patientfname);
+        var patientLNameMatch = patientLName.toLowerCase().includes(input_patientlname);
+        var serviceTypeMatch = serviceType.toLowerCase().includes(input_servicetype);
+        var serviceDateMatch = true;
+        var startTimeMatch = true;
+
+        // Check date filter
+        if (input_servicedatestart && input_servicedateend) {
+            var serviceDateObj = new Date(serviceDate);
+            var startDateObj = new Date(input_servicedatestart);
+            var endDateObj = new Date(input_servicedateend);
+            serviceDateMatch = serviceDateObj >= startDateObj && serviceDateObj <= endDateObj;
+        } else if (input_servicedatestart) {
+            var serviceDateObj = new Date(serviceDate);
+            var startDateObj = new Date(input_servicedatestart);
+            serviceDateMatch = serviceDateObj >= startDateObj;
+        } else if (input_servicedateend) {
+            var serviceDateObj = new Date(serviceDate);
+            var endDateObj = new Date(input_servicedateend);
+            serviceDateMatch = serviceDateObj <= endDateObj;
+        }
+
+        // Check time filter
+        if (input_servicetimestart && input_servicetimeend) {
+            var startTimeObj = new Date("01/01/1970 " + startTime);
+            var endTimeObj = new Date("01/01/1970 " + row.cells[6].textContent.trim());
+            var startTimeInputObj = new Date("01/01/1970 " + input_servicetimestart);
+            var endTimeInputObj = new Date("01/01/1970 " + input_servicetimeend);
+            startTimeMatch = startTimeObj >= startTimeInputObj && endTimeObj <= endTimeInputObj;
+        } else if (input_servicetimestart) {
+            var startTimeObj = new Date("01/01/1970 " + startTime);
+            var startTimeInputObj = new Date("01/01/1970 " + input_servicetimestart);
+            startTimeMatch = startTimeObj >= startTimeInputObj;
+            var endTimeMatch = true;
+        } else if (input_servicetimeend) {
+            var endTimeObj = new Date("01/01/1970 " + row.cells[6].textContent.trim());
+            var endTimeInputObj = new Date("01/01/1970 " + input_servicetimeend);
+            startTimeMatch = true;
+            var endTimeMatch = endTimeObj <= endTimeInputObj;
+        }
+
+        // Show or hide row based on filter criteria
+        if (patientFNameMatch && patientLNameMatch && serviceTypeMatch && serviceDateMatch && startTimeMatch && endTimeMatch) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    }
+}
+
+
+</script>
+{{end}}
