@@ -1,0 +1,384 @@
+:root {
+    box-sizing: border-box;
+    --background: #f3f8f6;
+    --text: #030504 ;
+    --textlight: #0f1a14;
+    --primary: #61a185;
+    --secondary: #a6aaca;
+    
+}
+
+html {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+strong, b {
+    font-weight: 1000;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+
+main {
+    margin: 4em auto;
+    text-align: center;
+    overflow: scroll;
+    color: var(--text);
+}
+
+/* NAVBAR*/
+header, nav {
+    width: max-content;
+    height: max-content;
+    margin: 0;
+    padding: 0em 2em;
+    justify-self: left;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 0 3em;
+}
+nav {
+    border-bottom: solid;
+    border-color: var(--secondary);
+    border-width: 0.15em;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0 ;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: max-content;
+    justify-content: center;
+}
+
+nav li {
+    font-size: 1.4em;
+    margin: 0 1em;
+    padding:  1em;
+    color: var(--secondary); 
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+nav a:hover * {
+    color: var(--primary);
+    cursor: grab;
+}
+
+.highlighted * {
+    color: var(--primary);
+}
+
+.addnote {
+    justify-self: flex-end;
+    font-size: 1.4em;
+    background-color: var(--primary);
+    color: var(--background);
+    border-radius: 1em;
+    padding: 0.5em 0.75em;
+    height: max-content;
+    text-decoration: none;
+}
+
+.addnote:hover {
+    color: var(--background);
+}
+
+.logout {
+    justify-self: flex-end;
+}
+
+
+
+/* END NAVBAR */
+/* Make the inputs not so weird*/
+button,
+input[type="submit"],
+textarea,
+select,
+input:not([type="checkbox"]),
+a.logout,
+a.button {
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    border: 0.15em solid var(--textlight);
+    padding: 0.2em 0.6em;
+    border-radius: 0.5em;
+    background-color: var(--base);
+    color: var(--textlight);
+    width: max-content;
+}
+
+button,
+input[type="submit"],
+a.button {
+    cursor: grab;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--background);
+}
+
+button:hover,
+input[type="submit"]:hover,
+.backbutton,
+.alt-button,
+a.logout,
+a.button.hover {
+    cursor: grab;
+    background-color: var(--background);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.backbutton:hover,
+.alt-button:hover,
+a.logout:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--background);
+}
+
+a.logout {
+    text-decoration: none;
+}
+
+a.notelink {
+    color: var(--text);
+    text-decoration: none;
+    width: 100%;
+}
+/*
+a.noteid:hover {
+    color: var(--primary);
+    text-decoration-color: var(--primary);
+    cursor: grab;
+}
+*/
+/* FOOTER STYLING */
+
+footer {
+    width: 100%;
+    padding: 0 2em;
+    display: flex;
+    justify-items: flex-end;
+}
+
+
+form {
+    width: max-content;
+    margin: 0 auto;
+    border: 0.15em solid var(--secondary);
+    border-radius: 0.5em;
+}
+/* LAYOUTS */
+/* login screen */
+/*Use padding and row gap for other pages */
+.login {
+    margin: 1em auto;
+    display: flex;
+    row-gap: 2em;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.login > div {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    gap: 0.5em;
+}
+
+.login > * {
+    justify-self: center;
+    align-self: center;
+}
+
+/* Progress Note */
+.progressnote {
+    margin: 1em auto;
+    display: flex;
+    row-gap: 2em;
+    flex-direction: column;
+    padding: 2em;
+    width: 25;
+}
+
+.progressnote > div.initial {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    justify-items: center;
+    gap: 0.5em;
+}
+
+.progressnote > div.text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 0.5em;
+}
+
+
+
+form > div.bnbuttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+textarea {
+    width: 32em;
+    height: 16em;
+}
+
+/*Admin Notes */
+
+.notes, .note {
+    margin: 1em auto;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: flex-start;
+    gap: 2em;
+    padding: 2em;
+}
+
+.notes-filter, .note-info {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style: none;
+    padding-right: 2em;
+    border-right: solid 0.15em var(--secondary);
+}
+
+.notes-filter > li {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5em; 
+}
+
+.notes-notes {
+    width: max-content;
+}
+
+.note-note {
+    margin: 1em 0;
+    max-width: 40em;
+    overflow: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 2em;
+}
+
+.note-info > li > form {
+    width: 100%;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em;
+}
+
+.note p {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+#status-form {
+    border: none;
+}
+
+
+/* END LAYOUTS */
+.error {
+    color: red;
+}
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    color: var(--secondary);
+}
+
+h1 {
+    padding: 0;
+    margin: 0.2em;
+    color: --text;
+}
+
+legend {
+    height: max-content;
+    width: max-content;
+}
+
+
+/* table */
+table {
+    border-collapse: collapse;
+    margin: 1em auto;
+    
+}
+
+thead th{
+    background-color: var(--secondary);
+    color: var(--text);
+}
+td,
+th {
+    padding: 0.5em 0.5em;
+    vertical-align: text-top;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: var(--secondary);
+    color: var(--textlight)
+}
+
+tr:nth-child(odd) {
+    background-color: var(--background);
+    color: var(--textlight);
+}

@@ -1,0 +1,47 @@
+{{define "title"}}Note{{end}}
+    {{define "main"}}
+        <h1>Progress Note</h1>
+        {{if .Note}}
+        <div class="note">
+            <ul class="note-info">
+                <li>
+                    <b>Note ID:</b> {{.Note.ID}}
+                </li>
+
+                <li>
+                    <b>Patient: </b> {{.Note.PatientFirstInitials}} {{.Note.PatientLastInitials}}
+                </li>
+                <li>
+                    <b>Provider: </b> {{.Note.ProviderName}}
+                </li>
+                <li>
+                    <b>Service: </b> {{.Note.Service}}
+                </li>
+                <li>
+                    <b>Date of Service: </b> {{.Note.ServiceDate.Format "01/02/2006"}}
+                </li>
+
+                <li>
+                    <b>Time: </b> {{.Note.StartTime.Format "15:04"}} to {{.Note.EndTime.Format "15:04"}}
+                </li>
+                <li>
+                    <b>Status: </b> {{.Note.Status}}
+                </li>
+                {{if (eq .AuthLevel 2)}}
+                <form id="status-form" action="/note/edit/{{.Note.ID}}" method="post">
+                    <button name="status" type="submit" value="Approved">Approve</button>
+                    <button name ="status" type="submit" value="Denied">Deny</button>
+                </form>
+                {{end}}
+            </ul>
+            <div class="note-note">
+                <p>
+                    <b>Summary of Service:</b> <br>
+                    {{.Note.Summary}}    
+                </p>
+
+               
+            </ul>
+        </div>
+        {{end}}
+{{end}}

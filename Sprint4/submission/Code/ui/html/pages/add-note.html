@@ -1,0 +1,53 @@
+{{define "title"}}Add Progress Note{{end}}
+{{define "add-note"}}highlighted{{end}}
+{{define "main"}}
+<h3>Create Note</h3>
+{{with .Form}}
+<form class="progressnote" id="progressnote" action="/note/create" method="post">
+    <div class="initial">
+        <label for="patient">Select Patient:</label>
+        {{with $.Errors.Patient}} <div class="error">{{.}} </div>{{end}}
+        <select name="patient" id="patient">
+            <option value="none"></option>
+            {{range .Patients}}
+            <option value="{{ . }}" {{if (eq . $.Form.Patient)}}selected{{end}}>{{ . }}</option>    
+            {{end}}
+        </select>
+    </div> 
+    <div class="initial">
+        <label for="service">Type of Service:</label>
+        {{with $.Errors.Service}} <div class="error">{{.}} </div>{{end}}
+        <select name ="service" id="service">
+            <option value="none"></option>
+            {{range $key, $value := .Services}}
+            <option value="{{$key}}" {{if (eq $key $.Form.Service)}}selected{{end}}>{{$value}}</option>
+            {{end}}
+        </select> 
+    </div>
+    <div class="initial">
+        <label for="serviceDate">Date of Service:</label> 
+        {{with $.Errors.ServiceDate}} <div class="error">{{.}} </div>{{end}}
+        <input type="date" id="servicedate" name="serviceDate" {{with .ServiceDate}}value="{{.}}"{{end}}> 
+    </div>
+    <div class="initial">
+        <label for="startTime">Session Start Time:</label> 
+        {{with $.Errors.StartTime}} <div class="error">{{.}} </div>{{end}}
+        <input type="time" id="startTime" name="startTime" {{with .StartTime}}value="{{.}}"{{end}}> 
+    </div>
+    <div class="initial">
+        <label for="endTime">Session End Time:</label> 
+        {{with $.Errors.EndTime}} <div class="error">{{.}} </div>{{end}}
+        <input type="time" id="endTime" name="endTime" {{with .EndTime}}value="{{.}}"{{end}}> 
+    </div>
+    <div class="text">
+        <label for="summary">Summary of Treatment</label>
+        {{with $.Errors.Summary}} <div class="error">{{.}} </div>{{end}}
+        <textarea id="summary" name="summary" cols="55" rows="4" {{with .Summary}}value="{{.}}"{{end}}></textarea>
+    </div>
+    <div class="bnbuttons">
+        <div></div>
+        <button form="progressnote" type="submit">Submit</button>
+    </div>
+</form>
+{{end}}
+{{end}}

@@ -1,0 +1,28 @@
+{{define "title"}}Login{{end}}
+
+{{define "login"}}highlighted{{end}}
+{{define "main"}}
+    <form class="login" action="/login" method="POST">
+        <h3>Login</h3>
+        {{with .Errors}}
+        <label class="error">{{.General}}</label>
+        {{end}}
+        <div class="username">
+            <label for="user">Username: </label>
+            {{with .Errors}}
+            <label class="error">{{.Username}}</label>
+            {{end}}
+            <input type="text" id="user" name="user">
+        </div>
+        <div class="password">
+            <label for="pass">Password: </label>
+            {{with .Errors}}
+            <label class="error">{{.Password}}</label>
+            {{end}}
+            <input type="password" id="pass" name="pass">
+        </div>
+        <input type="submit" value="Login" class="submit">
+    </form>
+    
+
+{{end}}

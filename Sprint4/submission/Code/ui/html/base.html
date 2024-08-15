@@ -1,0 +1,28 @@
+{{define "base"}}
+
+
+<!doctype html>
+<html id="html">
+  <head>
+    <meta charset="utf-8">
+    <title>{{template "title" .}}</title>
+    <link  href="/static/css/styleplayground.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+    <script src="/static/js/htmx.js"></script>
+    
+  </head>
+  <body>
+    <header>
+      {{template "nav" .}}
+      {{if (gt .AuthLevel 0)}}
+      <a class="logout" href="/logout">Logout</a>
+      {{end}}
+    </header>
+    <main>
+        {{template "main" .}}
+    </main>
+  </body>
+</html>
+{{end}}

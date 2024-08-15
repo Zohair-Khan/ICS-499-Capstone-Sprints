@@ -1,0 +1,30 @@
+{{define "nav"}}
+
+
+{{if (eq .AuthLevel 2) }}
+<nav>
+  <ul>
+    <a class='{{block "notes" .}}{{end}}' href="/notes/view"><li>Dashboard</li></a>
+    <a class='{{block "add-note" .}}{{end}}' href="note/create"><li>Add Note</li></a>
+  </ul> 
+</nav>
+
+{{else if (eq .AuthLevel 1)}}
+<nav>
+  <ul>
+    <a class='{{block "notes" .}}{{end}}' href="/notes/view"><li>Dashboard</li></a>
+    <a class='{{block "add-note" .}}{{end}}' href="/note/create"><li>Add Note</li></a>
+  </ul> 
+</nav>
+
+{{else}}
+
+<nav>
+  <ul>
+    <a class='{{block "home" .}}{{end}}' href="/"><li>Home</li></a>
+    <a class='{{block "login" .}}{{end}}' href="/login"><li>Login</li></a>
+  </ul>
+</nav>
+{{end}}
+{{end}}
+

@@ -1,0 +1,111 @@
+:root {
+    --background: #F0EBD8;
+    --element: #f0b67f;
+    --header: #fe5f55;
+
+    --base: #F4F3EE;
+    --base2: #BCB8B1;
+    --secondary: #220C10;
+    --secondary2: #4F6272;
+    --accent: #E0AFA0;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background-color: var(--base);
+}
+
+nav {
+    
+    width: 100vw;
+    height: 10vh;
+    background-color: var(--secondary2);
+    
+}
+
+nav > li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    column-gap: 3rem;
+    justify-content: center;
+}
+
+nav ul {
+    
+   font-size: 2rem; 
+}
+
+main {
+    margin: 0 auto;
+    padding: 10vh 0;
+}
+
+div .progressnote {
+    padding: 2rem;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*text-align: center; */
+    width: 500px;
+    background-color: var(--element);
+    border-radius: 0.5rem;
+}
+
+button {
+    
+    border: none;
+    background-color: var(--header);
+    border-radius: 0.5rem;
+    height: 2rem;
+    font-size: 1.5rem;
+}
+
+button:hover {
+    background-color: var(--background);
+}
+
+.colors {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.base {
+    background-color: var(--base);
+}
+
+.base2 {
+    background-color: var(--base2);
+}
+.secondary {
+    background-color: var(--secondary);
+}
+.secondary2 {
+    background-color: var(--secondary2);
+}
+.accent {
+    background-color: var(--accent);
+}
+.base, .base2, .secondary {
+    width: 200px;
+}
+
+.secondary2 {
+    width: 300px;
+}
+
+.accent {
+    width: 100px;
+}

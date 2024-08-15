@@ -1,0 +1,170 @@
+{{define "title"}}Provider Notes{{end}}
+{{define "notes"}}highlighted{{end}}
+    
+    <!-- https://www.w3schools.com/howto/howto_js_filter_table.asp -->
+    <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table -->
+    
+{{define "main"}}    
+    <div class="notes">
+    <ul class="notes-filter">
+        <li>
+            <label for="patientinit">Patient Initials:</label> 
+            <input type="text" id="patientinit" onkeyup="filterTable()">
+        </li>
+        <li>
+            <label for="servicedatestart">Between dates:</label> 
+            <input type="date" id="servicedatestart" onchange="filterTable()">
+            <label for="servicedateend"> and </label>
+            <input type="date" id="servicedateend" onchange="filterTable()"> 
+        </li> 
+        <li>
+            <label for="servicetimestart">Between times:</label> 
+            <input type="time" id="servicetimestart" onchange="filterTable()">
+            <label for="servicetimeend"> and </label>
+            <input type="time" id="servicetimeend" onchange="filterTable()"> 
+        </li>
+        <li>
+            <label for="servicetype">Type of Service:</label> 
+
+            <select id="servicetype" onchange="filterTable()">
+              
+                <option value="family">Family</option>
+                
+                <option value="general">General</option>
+                
+                <option value="group">Group</option>
+                
+                <option value="individual">Individual</option>
+            </select> 
+        </li> 
+        <button class="clear" onclick="clearFilters()">Clear Filters</button>
+    </ul>
+    <table class="notes-notes" id="myTable">
+        <thead>
+            <tr class="header">
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Patient</th>
+                <th>Provider</th>
+                <th>Service</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Notes}}
+            <tr >
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.ServiceDate.Format "01/02/2006"}}</a></td>
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.StartTime.Format "15:04"}}</a></td>
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.EndTime.Format "15:04"}}</a></td>
+                 
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.PatientFirstInitials}} {{.PatientLastInitials}}</a></td>
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.ProviderName}}</a></td>
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.Service}}</a></td>
+                <td><a class="notelink" href="/note/view/{{.ID}}">{{.Status}}</a></td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+document.getElementById("servicetype").selectedIndex = -1;
+
+function clearDateFilter() {
+    document.getElementById("servicedatestart").value = "";
+    document.getElementById("servicedateend").value = "";
+}
+
+function clearTimeFilter() {
+    document.getElementById("servicetimestart").value = "";
+    document.getElementById("servicetimeend").value = "";
+}
+
+function clearServiceFilter() {
+    document.getElementById("servicetype").selectedIndex = -1;
+}
+
+function clearFilters() {
+    document.getElementById("patientinit").value = "";
+    clearDateFilter();
+    clearTimeFilter();
+    clearServiceFilter();
+    filterTable();
+}
+
+function matchingDate(row) {
+    var row_date = row.cells[0].textContent;
+    var input_servicedatestart = document.getElementById("servicedatestart").value;
+    var input_servicedateend = document.getElementById("servicedateend").value;
+    if (input_servicedatestart) {
+        // console.log(Date.parse(input_servicedatestart) > Date.parse(row_date))
+        if(Date.parse(input_servicedatestart) > Date.parse(row_date)) {return false;}
+    }
+    if (input_servicedateend) {
+        var newendDate = new Date(Date.parse(input_servicedateend) + 1 * 24 * 60 * 60 * 1000);
+        // console.log(Date.parse(input_servicedateend) < Date.parse(row_date))
+        // if(Date.parse(input_servicedateend) < Date.parse(row_date)) {return false;}
+        if(Date.parse(newendDate) < Date.parse(row_date)) {return false;}
+    }
+    return true;
+}
+
+function matchingTime(row) {
+    var row_starttime = row.cells[1].textContent;
+    var row_endtime = row.cells[2].textContent;
+    var input_servicetimestart = document.getElementById("servicetimestart").value;
+    var input_servicetimeend = document.getElementById("servicetimeend").value;
+    if (input_servicetimestart) {
+        if (row_starttime < input_servicetimestart) {        
+            return false;
+        }
+    }
+    if (input_servicetimeend) {
+        if (row_endtime > input_servicetimeend) {        
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function matchingInit(row) {
+    var row_init = row.cells[3].textContent.toLowerCase() || row.cells[3].innerText.toLowerCase();
+    var input_patientinit = document.getElementById("patientinit").value.toLowerCase();
+    if (document.getElementById("patientinit").value != "") {
+        if (!row_init.includes(input_patientinit)) {return false;}
+    }
+    return true;
+}
+
+function matchingService(row) {
+    var row_service = row.cells[5].textContent.toLowerCase() || row.cells[5].innerText.toLowerCase();
+    var input_patientservice = document.getElementById("servicetype").value.toLowerCase();
+    if (document.getElementById("servicetype").value != "") {
+        if (!row_service.includes(input_patientservice)) {return false;}
+    }
+    return true;
+}
+
+function filterTable() {
+    // Get the table and its rows
+    var table = document.getElementById("myTable");
+    var tr = table.getElementsByTagName("tr");
+
+    // Loop through each row of the table
+    for (var i = 1; i < tr.length; i++) {
+        var row = tr[i];
+
+        // Show or hide row based on filter criteria
+        if (matchingDate(row) && matchingInit(row) && matchingTime(row) && matchingService(row)) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    }
+}
+
+</script>
+{{end}}
